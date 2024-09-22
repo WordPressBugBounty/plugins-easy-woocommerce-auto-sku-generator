@@ -1,0 +1,1 @@
+# plugins-easy-woocommerce-auto-sku-generator
