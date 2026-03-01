@@ -73,24 +73,24 @@ div#woocommerce_awooc_call_to_rate a {
     position: relative;
 }
 
-#donate,
-#donate_bottom {
-    color: #FFFFFF;
-    background-color: #82c785;
-    padding: 10px;
-    text-decoration: none;
+/* Review button (replaces old donate button) */
+.ffxf-review-btn {
     display: inline-block;
-    margin-top: 30px;
-    border-radius: 4px;
+    margin-top: 16px;
+    padding: 9px 20px;
+    background-color: #2271b1;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 3px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: background-color 0.15s ease;
 }
 
-#donate:hover,
-#donate_bottom:hover {
-    background-color: #81bb84;
-}
-
-#donate_bottom {
-    background-color: #F44336;
+.ffxf-review-btn:hover,
+.ffxf-review-btn:focus {
+    background-color: #135e96;
+    color: #fff;
 }
 
 div#hidden-content {
@@ -216,7 +216,6 @@ table.form-table th {
 
 @media (min-width: 1595px) {
 
-    /* Медиа запрос для -  */
     .mass_generate {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -232,7 +231,6 @@ table.form-table th {
         flex-wrap: wrap;
     }
 
-    /* Конец медиа запроса для -  */
 }
 
 .inside hr {
@@ -333,57 +331,166 @@ a.thickbox.open-plugin-details-ffxf-modal {
 }
 
 
+/* ---- Modal body, centered layout ---- */
+.ffxf-modal-desc {
+    font-size: 13px;
+    color: #50575e;
+    text-align: center;
+    margin: 0 0 16px;
+    line-height: 1.5;
+}
+
+.ffxf-modal-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* ---- Options (checkboxes) ---- */
+.ffxf-modal-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0 10px;
+    width: 100%;
+}
+
+.ffxf-modal-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.ffxf-modal-option label {
+    margin-bottom: 0;
+}
+
+/* ---- Batch size row ---- */
+.ffxf-batch-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4px 0 0;
+    width: 100%;
+}
+
+.ffxf-batch-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 12px;
+    color: #50575e;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+/* Override WooCommerce float on the tip icon inside our label */
+.ffxf-batch-label .ffxf-batch-tip {
+    float: none;
+    display: inline-flex;
+    align-items: center;
+    margin: 0;
+    width: 16px;
+    height: 16px;
+}
+
+.ffxf-batch-note {
+    font-weight: 400;
+    color: #8c8f94;
+}
+
+.ffxf-batch-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.ffxf-batch-controls .small-text {
+    width: 54px;
+}
+
+.ffxf-batch-controls .ffxf-batch-hint-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0 8px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 28px;
+}
+
+.ffxf-batch-controls .ffxf-batch-hint-btn .dashicons {
+    font-size: 14px;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+}
+
+/* Hint result text */
+.ffxf-batch-hint-result {
+    font-size: 11px;
+    color: #2271b1;
+    font-style: italic;
+    text-align: center;
+    width: 100%;
+    margin-top: 4px;
+}
+
+/* Status line (category count) */
+.ffxf-cat-status {
+    text-align: center;
+    font-size: 12px;
+    opacity: 0.8;
+    font-style: italic;
+    margin: 6px 0 0;
+}
+
+/* ==========================================================================
+ * Modal overlay + frame — WordPress admin style
+ * Matches WP media modal / ThickBox visual language:
+ * white panel, 1px border #dcdcde, subtle shadow, dark semi-transparent backdrop
+ * ========================================================================== */
+
 .ffxf-modal-overlay {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
-    background-color: #fff;
+    background: rgba(0, 0, 0, 0.7);
     opacity: 0;
     visibility: hidden;
-    z-index: 40;
-    -moz-transition: opacity 0.25s ease 0s, visibility 0.35s linear;
-    -o-transition: opacity 0.25s ease 0s, visibility 0.35s linear;
-    -webkit-transition: opacity 0.25s ease, visibility 0.35s linear;
-    -webkit-transition-delay: 0s, 0s;
-    -webkit-transition: opacity 0.25s ease 0s, visibility 0.35s linear;
-    transition: opacity 0.25s ease 0s, visibility 0.35s linear;
+    z-index: 159900;
+    transition: opacity 0.2s ease, visibility 0.2s linear;
 }
 
 .ffxf-modal-overlay.state-show {
-    opacity: .7;
+    opacity: 1;
     visibility: visible;
-    -webkit-transition-delay: 0s;
-    transition-delay: 0s;
-    -webkit-transition-duration: 0.2s, 0s;
-    transition-duration: 0.2s, 0s;
 }
 
+/* Frame: centred flex container */
 .ffxf-modal-frame {
-    position: fixed !important;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    margin: auto;
-    z-index: 50 !important;
-    display: table;
-    display: -webkit-box;
-    display: -ms-flexbox;
+    z-index: 159950;
     display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
-    -moz-box-align: center;
-    -webkit-box-pack: center;
     justify-content: center;
-    -moz-box-pack: center;
-    -ms-flex-pack: center;
-    width: 100%;
-    text-align: center;
     visibility: hidden;
+    padding: 20px;
+    box-sizing: border-box;
 }
 
 .ffxf-modal-frame.state-appear {
@@ -391,16 +498,8 @@ a.thickbox.open-plugin-details-ffxf-modal {
 }
 
 .ffxf-modal-frame.state-appear .ffxf-modal-inset {
-    -webkit-animation: modalComeIn 0.25s ease;
-    animation: modalComeIn 0.25s ease;
+    animation: ffxf-modal-in 0.2s ease forwards;
     visibility: visible;
-    /* to keep @ final state */
-}
-
-.ffxf-modal-frame.state-appear .ffxf-modal-body {
-    opacity: 1;
-    -webkit-transform: translateY(0) scale(1, 1);
-    transform: translateY(0) scale(1, 1);
 }
 
 .ffxf-modal-frame.state-leave {
@@ -408,223 +507,144 @@ a.thickbox.open-plugin-details-ffxf-modal {
 }
 
 .ffxf-modal-frame.state-leave .ffxf-modal-inset {
-    -webkit-animation: modalHeadOut 0.35s ease 0.1s;
-    animation: modalHeadOut 0.35s ease 0.1s;
+    animation: ffxf-modal-out 0.2s ease forwards;
     visibility: visible;
+}
+
+/* Inner panel — WP admin card style */
+.ffxf-modal {
+    width: 100%;
+    max-width: 560px;
+}
+
+.ffxf-modal-inset {
+    position: relative;
+    background: #fff;
+    border: 1px solid #dcdcde;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+    visibility: hidden;
+    overflow: hidden;
+}
+
+/* Header bar — dark WP-style */
+.ffxf-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #1d2327;
+    border-bottom: 1px solid #dcdcde;
+}
+
+.ffxf-modal-header h2 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.4;
+}
+
+/* Close button — standard WP "×" */
+.ffxf-modal-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 2px;
+    flex-shrink: 0;
+    transition: color 0.15s ease, background 0.15s ease;
+}
+
+.ffxf-modal-close:hover,
+.ffxf-modal-close:focus {
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    box-shadow: none;
+}
+
+.ffxf-modal-close:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.ffxf-modal-close .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    line-height: 20px;
+}
+
+/* Body */
+.ffxf-modal-body {
+    padding: 20px 24px 24px;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.2s ease 0.05s, transform 0.2s ease 0.05s;
+}
+
+.ffxf-modal-frame.state-appear .ffxf-modal-body {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .ffxf-modal-frame.state-leave .ffxf-modal-body {
     opacity: 0;
-    -webkit-transition-delay: 0s;
+    transform: translateY(6px);
     transition-delay: 0s;
-    -webkit-transition-duration: 0.35s;
-    transition-duration: 0.35s;
-    -webkit-transition-timing-function: ease;
-    transition-timing-function: ease;
-    -webkit-transform: translateY(25px);
-    transform: translateY(25px);
-}
-
-@-moz-document url-prefix() {
-    .ffxf-modal-frame {
-        height: calc(100% - 55px);
-    }
-}
-
-.ffxf-modal {
-    display: block;
-    vertical-align: middle;
-    text-align: center;
-}
-
-.ffxf-modal-inset {
-    max-width: 600px;
-    position: relative;
-    padding: 40px 60px;
-    background-color: white;
-    min-width: 320px;
-    min-height: 126px;
-    margin: auto;
-    visibility: hidden;
-    -webkit-box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
-    box-shadow: 2px 2px 8px 1px rgba(0, 0, 0, 0.2);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-}
-
-.ffxf-modal-inset .close, .ffxf-modal-inset .close_category {
-    display: block;
-    cursor: pointer;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    opacity: .4;
-    border-radius: 50px;
-    height: 40px;
-    width: 40px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    z-index: 999;
-}
-
-button.generate_button_category.disabled {
-    cursor: no-drop;
-    background: #757575;
-    -webkit-transition: 0.6s all;
-    transition: 0.6s all;
-}
-
-.ffxf-modal-inset .close:hover, .ffxf-modal-inset .close_category:hover {
-    opacity: 1;
-}
-
-.ffxf-modal-body {
-    margin: auto;
-    opacity: 0;
-    -webkit-transform: translateY(0) scale(0.8, 0.8);
-    transform: translateY(0) scale(0.8, 0.8);
-    -webkit-transition-property: opacity, -webkit-transform;
-    transition-property: opacity, -webkit-transform;
-    transition-property: opacity, transform;
-    transition-property: opacity, transform, -webkit-transform;
-    -webkit-transition-duration: 0.25s;
-    transition-duration: 0.25s;
-    -webkit-transition-delay: 0.1s;
-    transition-delay: 0.1s;
-}
-
-.ffxf-modal-body h3 {
-    font-weight: 700;
-    padding-bottom: 22px;
-    display: block;
-    text-align: center;
 }
 
 .ffxf-modal-body p {
-    padding-bottom: 0px;
+    padding-bottom: 0;
 }
 
 .ffxf-modal-body .ps {
     font-size: 12px;
-    opacity: .8;
+    opacity: 0.8;
     font-style: italic;
+    text-align: center;
+    margin: 8px 0 0;
 }
 
-@-webkit-keyframes modalComeIn {
-    0% {
-        visibility: hidden;
-        opacity: 0;
-        -webkit-transform: scale(0.8, 0.8);
-        transform: scale(0.8, 0.8);
-    }
-
-    65.5% {
-        -webkit-transform: scale(1.03, 1.03);
-        transform: scale(1.03, 1.03);
-    }
-
-    100% {
-        visibility: visible;
-        opacity: 1;
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
-    }
+/* Animations */
+@keyframes ffxf-modal-in {
+    from { opacity: 0; transform: scale(0.95); visibility: visible; }
+    to   { opacity: 1; transform: scale(1);    visibility: visible; }
 }
 
-@keyframes modalComeIn {
-    0% {
-        visibility: hidden;
-        opacity: 0;
-        -webkit-transform: scale(0.8, 0.8);
-        transform: scale(0.8, 0.8);
-    }
-
-    65.5% {
-        -webkit-transform: scale(1.03, 1.03);
-        transform: scale(1.03, 1.03);
-    }
-
-    100% {
-        visibility: visible;
-        opacity: 1;
-        -webkit-transform: scale(1, 1);
-        transform: scale(1, 1);
-    }
-}
-
-@-webkit-keyframes modalHeadOut {
-    0% {
-        visibility: visible;
-        opacity: 1;
-        -webkit-transform: translateY(0) scale(1, 1);
-        transform: translateY(0) scale(1, 1);
-    }
-
-    100% {
-        visibility: hidden;
-        opacity: 0;
-        -webkit-transform: translateY(35px) scale(0.97, 0.97);
-        transform: translateY(35px) scale(0.97, 0.97);
-    }
-}
-
-@keyframes modalHeadOut {
-    0% {
-        visibility: visible;
-        opacity: 1;
-        -webkit-transform: translateY(0) scale(1, 1);
-        transform: translateY(0) scale(1, 1);
-    }
-
-    100% {
-        visibility: hidden;
-        opacity: 0;
-        -webkit-transform: translateY(35px) scale(0.97, 0.97);
-        transform: translateY(35px) scale(0.97, 0.97);
-    }
+@keyframes ffxf-modal-out {
+    from { opacity: 1; transform: scale(1);    visibility: visible; }
+    to   { opacity: 0; transform: scale(0.95); visibility: hidden;  }
 }
 
 
-.generate_button, .generate_button_category {
-    -webkit-appearance: none;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    position: relative;
-    top: 50%;
-    display: block;
-    min-width: 10%;
-    line-height: 40px;
-    font-size: 14px;
-    margin: 0 auto;
-    padding: 0 30px;
-    background-color: #F2594B;
-    color: #FFF;
-    border-radius: 3px;
-    -webkit-transform: translateY(-50%);
-    transform: translateY(-50%);
-    margin-top: 30px;
-    -webkit-transition: 0.6s all;
-    transition: 0.6s all;
+/* ---- Generate buttons (inside modals) ---- */
+/* Use WP native button-primary + button-large — no custom colours needed */
+.ffxf-modal-action {
+    margin-top: 16px;
+    margin-bottom: 4px;
+    text-align: center;
 }
 
-.generate_button:hover, .generate_button_category {
-    background-color: #f46f63;
+/* Kept for JS .hide() compatibility */
+.generate_button,
+.generate_button_category {
+    display: inline-block;
 }
 
-.load_posts_by_ajax {
-    background-color: #000 !important;
+button.generate_button_category.disabled,
+button.generate_button_category:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 .my-posts {
@@ -658,7 +678,7 @@ button.generate_button_category.disabled {
 }
 
 .my-posts > div > div:last-child {
-    width: 40%;
+    width: 33%;
 }
 
 .my-posts > div > div:first-child {
@@ -696,94 +716,96 @@ button.generate_button_category.disabled {
     width: 4px;
 }
 
+/* -------------------------------------------------------------------------
+ * Progress pie chart — conic-gradient implementation.
+ * Smooth 0–100 % without the clip-based "jump at 50%" artefact.
+ * Size: 160 px outer / 128 px inner circle (80%).
+ * -------------------------------------------------------------------------*/
+
 .progress-pie-chart {
-    width: 200px;
-    height: 200px;
+    width: 160px;
+    height: 160px;
     border-radius: 50%;
-    background-color: #E5E5E5;
+    /* conic-gradient drives the fill; JS updates via inline style */
+    background: conic-gradient(#81CE97 0deg, #E5E5E5 0deg);
     position: relative;
-    transition: 2s all;
+    margin: 16px auto;
+    transition: background 0.4s ease-out;
 }
 
-.progress-pie-chart.gt-50 {
-    background-color: #81CE97;
-}
+/* gt-50 class kept for JS compatibility — no longer changes appearance */
+.progress-pie-chart.gt-50 {}
 
+/* Legacy clip elements — hidden but kept so PHP template needs no change */
 .ppc-progress {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    left: calc(50% - 100px);
-    top: calc(50% - 100px);
-    width: 200px;
-    height: 200px;
-    clip: rect(0, 200px, 200px, 100px);
+    display: none;
 }
 
 .ppc-progress .ppc-progress-fill {
-    content: "";
-    position: absolute;
-    border-radius: 50%;
-    left: calc(50% - 100px);
-    top: calc(50% - 100px);
-    width: 200px;
-    height: 200px;
-    clip: rect(0, 100px, 200px, 0);
-    background: #81CE97;
-    -webkit-transform: rotate(60deg);
-    transform: rotate(60deg);
-    transition: 2s all;
+    display: none;
 }
 
-.gt-50 .ppc-progress {
-    clip: rect(0, 100px, 200px, 0);
-}
-
-.gt-50 .ppc-progress .ppc-progress-fill {
-    clip: rect(0, 200px, 200px, 100px);
-    background: #E5E5E5;
-}
-
+/* Inner white circle that shows the percentage text */
 .ppc-percents {
-    content: "";
     position: absolute;
     border-radius: 50%;
-    left: calc(50% - 173.9130434783px / 2);
-    top: calc(50% - 173.9130434783px / 2);
-    width: 173.9130434783px;
-    height: 173.9130434783px;
+    /* Inner circle = 80% of 160 px = 128 px */
+    width: 128px;
+    height: 128px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
     background: #fff;
-    text-align: center;
-    display: table;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pcc-percents-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
 }
 
 .ppc-percents span {
     display: block;
-    font-size: 2.6em;
-    font-weight: bold;
+    font-size: 1.8em;
+    font-weight: 700;
     color: #81CE97;
+    line-height: 1;
+    transition: color 0.3s ease;
 }
 
-.pcc-percents-wrapper {
-    display: table-cell;
-    vertical-align: middle;
+/* SKU column: label + value in one row */
+.ffxf-product-row__sku {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2px;
+    text-align: right;
 }
 
-.progress-pie-chart {
-    margin: 0px auto 0;
+.ffxf-sku-label {
+    font-size: 11px;
+    color: #8c8f94;
+    line-height: 1.2;
+    white-space: nowrap;
 }
 
 .slr {
     color: #81CE97;
+    font-weight: 600;
+    font-size: 12px;
     white-space: nowrap;
-    display: inline-block;
+    display: block;
     overflow: hidden;
-    width: 109px;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
+    max-width: 160px;
     text-overflow: ellipsis;
-    text-align: left;
-    margin-bottom: -4px;
+    text-align: right;
+    line-height: 1.3;
 }
 
 p.title_product {
@@ -834,7 +856,6 @@ span.skuautoffxf_warning {
 
 @media (max-width: 1207px) {
 
-    /* Медиа запрос для -  */
     .wrapper_setting_ffxf > .block_left > div {
         width: 100%;
     }
@@ -877,5 +898,4 @@ span.skuautoffxf_warning {
         flex-wrap: wrap;
     }
 
-    /* Конец медиа запроса для -  */
 }

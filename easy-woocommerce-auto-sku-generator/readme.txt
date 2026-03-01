@@ -1,186 +1,75 @@
 === Easy Auto SKU Generator for WooCommerce ===
 Contributors: alexodiy, campusboy1987
 Donate link: https://boosty.to/dan-zakirov/donate
-Tags: sku generator, product sku, woocommerce sku, auto sku, add sku, sku woocommerce, woocommerce, SKU Variable Products, Variable Products, sku numbers, sku letters, sku slug, autoSKU, automatically generate SKUs, generate variation SKUs, SKU Settings
+Tags: woocommerce, sku generator, product sku, auto sku, variable product sku
 Requires at least: 4.8
-Tested up to: 6.4
-Stable tag: 1.2.0
+Tested up to: 6.9
+Stable tag: 1.3.0
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
+Automatically generate SKU codes in WooCommerce with flexible formats, variation support, and bulk tools.
+
 == Description ==
-A very simple plug-in of auto-generating SKU for those who are too lazy to fill in the article (SKU) of the product when it is created. Just activate the plugin and when creating a product the SKU will automatically generate.
+Generate WooCommerce SKU values automatically when creating products, editing products, or running bulk actions.
 
-> In the last update of the plugin, a new function was added - **Generation of SKU into separate categories**.
+Easy Auto SKU Generator helps store owners keep SKU structure consistent without manual typing.
 
-> **The new version of the plugin adds the function of mass generating SKU of all products at the same time. We will improve this option. In the future, not only mass generation will be available, but also generation for certain parameters (generation by attributes, by tags, by categories).**
+Tested with WordPress 6.9.1 and WooCommerce 10.5.2.
 
-== Settings plugin ==
+== Settings ==
 
-Woocommerce &rarr; Settings &rarr; Products &rarr; SKU Settings
+WooCommerce &rarr; Settings &rarr; Products &rarr; SKU Settings
 
-== Features: ==
+== Features ==
 
-1. Automatic generation of SKU when creating products.
-2. If an SKU is already registered, generation will not occur again.
-3. Automatic generation of SKU for variable products upon saving.
-4. Ability to set the number of characters in the SKU.
-5. Option to add a prefix before the SKU.
-6. Choose SKU format (Numbers only, Letters only, Alphanumeric, Product Template-based).
-7. Option to use the product ID in the SKU.
-8. Disable/Enable SKU generation for variable products.
-9. Special option "Use Previous Product" - generates a product considering the last published product. For instance, if the last published product has SKU 005234 and this option is enabled, the next item will have SKU 005235 (+1 from the previous published product).
-10. Added and ready-to-use function: "Bulk generate SKU for all products."
-11. Added and ready-to-use new function: "Bulk generate SKU by Category."
-12. Option to allow duplicate SKUs in the online store.
-13. Added "SKU suffix" option.
-14. Added "Additional number" option.
-15. Added "Format for Additional number" option.
-16. Added "SKU suffix" option.
-17. Added 2 formats for generating last numbers.
-18. Added a setting for additional options in generating variant products.
-19. Added a setting for the separator in variant products when generating SKUs.
+1. Auto-generate SKU for new products.
+2. Skip generation when SKU already exists (unless recreate mode is enabled).
+3. Generate variation SKUs for variable products.
+4. Choose SKU format: numbers, letters, alphanumeric, or product slug.
+5. Set SKU length.
+6. Add prefix and suffix.
+7. Add product ID to SKU.
+8. Optional "Use Previous Product" mode (+1 sequence from previous product SKU).
+9. Allow duplicate SKUs when needed.
+10. Bulk generate SKU for all products.
+11. Bulk generate SKU by category.
+12. Additional number with configurable increment format.
+13. Variation separator settings for variable products.
 
-== Required Plugins ==
+== Required Plugin ==
+
 * [WooCommerce](https://wordpress.org/plugins/woocommerce/)
 
-The "Easy Auto SKU Generator for WooCommerce" plugin is fully dependent on the WooCommerce plugin and utilizes its API for SKU generation. This integration enables seamless SKU creation and management within your WooCommerce-powered online store.
+This plugin works only with WooCommerce.
 
-===How the plugin works===
+== How it works ==
 
-The essence of our plugin unfolds through its dual functionality, operating in two distinctive modes. Firstly, it facilitates seamless SKU generation during the creation and editing of products. Secondly, it offers a robust feature for bulk SKU generation, streamlining your workflow. This plugin harnesses the potential of the custom field "_sku" and dynamically populates this field based on the plugin's settings.
+The plugin uses WooCommerce product meta (`_sku`) and applies your rules from SKU Settings.
 
-Each of these settings will be elaborated upon in the subsequent sections, providing you with a comprehensive understanding of how the plugin operates and optimizes your SKU management process.
+You can use it in two modes:
 
-At our core, we're here to simplify your plugin experience. Often, right after you install the plugin, you might want to dive into using it for creating or editing products. In this scenario, if you haven't made changes to the settings yet, the plugin will automatically generate SKUs based on random values.
+1. **Product editor mode**: SKU is generated while creating or updating a product.
+2. **Bulk mode**: SKU is generated for all products or selected categories.
 
-However, if you're aiming for more precise SKU generation, we recommend saving your chosen settings right after installing the plugin. This action not only lets you establish a consistent character count but also solidifies your SKU structure.
+When "Re-create existing SKUs" is disabled, only empty SKU values are generated.
 
-===Plugin Option: Characters===
+== Bulk SKU Generation ==
 
-Introducing the transformative capabilities of the "Characters" configuration – your inaugural step towards SKU customization. This foundational setting empowers you to define the exact quantity of characters that will grace your SKUs. As a pivotal determinant, "Characters" enables you to strike the ideal balance between concise representation and informative tagging.
+Bulk generator supports:
 
-In certain instances, the character count might expand, particularly in light of the plugin's supplementary options that can introduce elements like product IDs or customized prefixes and suffixes. It's noteworthy that the "Characters" parameter stands at the core of generating a diverse array of SKU combinations, instilling each product with its own unique identity.
+* Generate SKU for all products.
+* Generate SKU by category.
+* Optional recreation of existing SKU values.
+* Progress indicator during processing.
 
-===Plugin Option: Prefix SKU===
-
-With this capability, you have the freedom to insert a unique prefix that will be showcased at the outset of your SKU. It's like adding a personal touch to your product codes!
-
-Imagine your SKU transforming into a distinct code, effortlessly carrying your brand's identity. For instance, you could enter something like "BN_" and watch it seamlessly blend with the generated SKU. Let's say your product code was "893267" – together, they create a powerful combination like "BN_893267."
-
-This personalized touch not only adds a professional flair to your products but also makes managing and categorizing items a breeze.
-
-===Plugin Option: Select SKU format===
-
-Introducing the "Select SKU Format" option – your gateway to product code personalization. With four distinct choices at your fingertips, you're invited to infuse character into your SKUs. Choose between letters, numbers, a seamless fusion of both, or even embrace your product's unique essence through its slug, as illustrated by the example "your-product."
-
-Imagine the possibilities: from the elegant simplicity of "KSZHGD" or "893267" to the captivating complexity of "7SZ4G2." And here's the twist – when you opt for the product slug format, the previously mentioned "Characters" setting takes a back seat.
-
-===Plugin Option: Add product ID===
-
-Introducing the "Add product ID" option – a game-changer in SKU personalization. When you choose to activate this feature, a product's unique ID seamlessly joins forces with its SKU, creating a dynamic duo of identification.
-
-Here's the twist: if you opt for this integration, the previously set "Characters" count takes a backseat. The product's inherent ID length shapes the SKU's character count, ensuring a harmonious blend of precision and practicality.
-
-Imagine the efficiency of SKU "893267" paired with its corresponding product ID. This option not only streamlines your inventory management but also offers a new level of traceability for each item.
-
-===Plugin Option: Take previous product===
-
-Embark on an innovative journey with the "Take previous product" option – an experimental feature tailored to cater to the unique needs of a select user base. This function takes into account the SKU of the last published product, seamlessly guiding the generation of the SKU for the next product in line.
-
-Please note: As an experimental feature, "Take previous product" is specifically designed for individual use cases. It is important to highlight that this option applies solely during the creation or editing of individual products. It is not applicable to the bulk generation of SKUs.
-
-===Plugin Option: Duplicate SKUs===
-
-Unveil a new level of operational efficiency with the "Duplicate SKUs" feature – an astute solution crafted to streamline your processes and prevent inadvertent errors. This capability provides you the flexibility to assign identical SKUs, offering a practical approach to instances where the same SKU is applicable across multiple products.
-
-By activating this feature, you open the door to a smoother operational landscape. Imagine a scenario where the same SKU effortlessly serves diverse products, saving you valuable time while minimizing the risk of oversights.
-
-Embrace the power of "Duplicate SKUs" – a tool designed to harmonize practicality and productivity. Consider implementing this option, particularly when your inventory encompasses a multitude of items, and you're planning a bulk SKU generation.
-
-===Plugin Option: SKU suffix===
-
-Introducing the "SKU suffix" option – your personal touch to wrap up your SKU creation journey. This feature grants you the creative freedom to append a distinct suffix to the end of each SKU, infusing your products with an extra layer of identity.
-
-Visualize this: your SKU blossoming into a unique code, like the elegant "BN_893267_SUF_." This extra touch brings an unmistakable mark to your products, making them stand out in the digital landscape.
-
-It's important to note that currently, the "SKU suffix" option is available exclusively during bulk SKU generation. However, we're excited to share that its capabilities will soon extend to individual product creation and editing, offering even more versatility in your SKU customization journey.
-
-===Plugin Option: Additional number===
-
-Embark on a journey of SKU personalization, guided by the dynamic "Additional number" feature. This ingenious tool, currently operational during bulk SKU generation, introduces a numeric sequence at the end of your SKU codes, incrementing by +1 with each step.
-
-Imagine this transformation: your SKU evolving into a sequence-rich identifier, such as "BN_893267-001" progressing to "BN_893267-002." This visual narrative imparts a distinctive identity to each product in your inventory.
-
-However, the possibilities don't end there. By incorporating a leading zero (0), you unlock two distinct formatting pathways:
-
-* For example: 008 → 009 → 0010 → 0011
-* Alternatively: 008 → 009 → 010 → 011
-
-As you navigate the potential of the "Additional number" feature, remember its seamless compatibility with "SKU Suffix." Merging an evolving numeric sequence with a signature suffix creates a potent formula for SKU codes that seamlessly embody your brand identity.
-
-While "Additional number" currently thrives within the mass SKU generator, we're excited to share that its reach will soon extend to individual product creation and editing. This impending expansion allows you to infuse your SKUs with character and progression, regardless of scale.
-
-===Plugin Option: Enable variant settings===
-
-The "Enable Variant Settings" option opens up a world of additional possibilities for SKU customization. With this feature activated, you gain access to two more options:
-
-* "Variable Product:" This empowers you to control the creation of variant SKUs. You can choose whether or not to generate SKUs for your variable products.
-* "Variation Separator:" You have the freedom to define a separator character, such as "/", "", "|", "-", "--", ".", "&", "#", "$", "@", or even a special prefix like "var". This separator enhances the organization and structure of your SKU variations.
-
-Currently, variant products are generated sequentially based on the main SKU, resulting in patterns like 893267-01, 893267-02, 893267-03. However, rest assured that we're diligently working to expand the functionality of variant SKU generation. Exciting changes are on the horizon, offering you even more versatile options for SKU customization.
-
-==Bulk SKU Generation: Unleash Efficiency and Precision==
-
-Experience the power of effortless SKU management with our Bulk SKU Generation feature. Now, you have two dynamic options at your disposal:
-
-* **Bulk Generate SKU for All Products:** Seamlessly generate SKUs for your entire product catalog in one swift action.
-* **Bulk Generate SKU by Category:** Tailor your SKU generation to specific categories, allowing for a more targeted approach.
-
-Both variants of bulk SKU generation operate in harmony with your plugin settings. Simply configure your preferences, save the settings, and watch as the SKUs come to life. But there's more to explore!
-
-As you engage the SKU generation process, you'll encounter the "Re-create existing SKUs?" option. When selected, this option recreates all SKUs, ensuring a comprehensive update. If left unselected, only missing SKUs will be generated, preserving existing codes.
-
-In the "Bulk Generate SKU by Category" generator, you'll find a comprehensive selection of categories. This empowers you to fine-tune SKU generation for specific sets of products. For those seeking enhanced category options, here's a strategic approach:
-
-1. Choose your settings.
-2. Save your preferences.
-3. Generate SKUs for one category.
-4. Modify settings.
-5. Generate SKUs for another category.
-
-Unleash the potential of Bulk SKU Generation and streamline your inventory management with precision. For inquiries or to delve deeper, please reach out to our dedicated support form on our website.
-
-== Great thanks ==
-
-* Thanks for the help [KAGG Design](https://profiles.wordpress.org/kaggdesign/)
-* Thanks for helping the developer [Artem Abramovich](https://profiles.wordpress.org/artabr/)
-* For help [Telegram chat "WordPress & WooCommerce" and all participants](https://t.me/c_wordpress)
-* For the best documentation in Russian by WordPress [Site wp-kama.ru](https://wp-kama.ru/)
+For large stores, run bulk generation in smaller batches to reduce server load.
 
 == Translations ==
 
-If you wish to help translate this plugin, you are most welcome!
-To contribute, please visit [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/easy-woocommerce-auto-sku-generator/)
-
-== Small Gifts, Big Impact: Support Plugin Growth with Your Donations ==
-
-Thank you all for your incredible support – it truly fuels my motivation to continuously enhance our plugins! Every bit of encouragement and feedback means the world to me. Your insights help shape the future of our WordPress tools, driving them to be even more powerful and user-friendly.
-
-Remember, a single review from you has an immense impact on the journey of our creations. Your words inspire me to refine and innovate, and I'm dedicated to delivering the best possible experiences through every line of code.
-
-If you'd like to contribute further or show your appreciation, you can now do so through this new donation link: <a href="https://boosty.to/dan-zakirov/donate" target="_blank">Boosty Donation Link</a>. Your generosity will undoubtedly make a difference in pushing our WordPress projects to new heights.
-
-Thank you for being a vital part of this incredible journey! 🚀🙌
-
-== Elevate Your Experience: Paid User Support and Subscription ==
-
-Due to the lack of available time for free plugin support, a decision has been made to introduce paid user support. Throughout my years of experience in web development, I have accumulated enough expertise to assist other users with various inquiries.
-
-By subscribing to Dan Zakirov's blog on Boosty at <a href="https://boosty.to/dan-zakirov" target="_blank">boosty.to/dan-zakirov</a>, you'll not only gain access to paid support for the "Easy Auto SKU Generator for WooCommerce" plugin but also a comprehensive range of consultations related to WooCommerce. Over the years, I have amassed numerous ready-made solutions, a variety of other plugins, and WordPress templates covering different aspects of WooCommerce and beyond.
-
-Additionally, the blog will feature interesting articles and reviews on different plugins. If you provide an original idea, I will strive to develop an entire plugin, and together we can work on advancing specific directions.
+If you want to help with translations, please visit:
+[translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/easy-woocommerce-auto-sku-generator/)
 
 == Installation ==
 
@@ -205,25 +94,55 @@ Manual Installation:
 
 = Can I contribute to the improvement of the plugin? =
 
-Sure! You can leave a request on the user [support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/). We will consider any proposal and teach any criticism.
+Yes. Please share ideas or bug reports on the [support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/).
+
+= Where can I find plugin settings? =
+
+Open: WooCommerce &rarr; Settings &rarr; Products &rarr; SKU Settings.
+
+= What SKU formats are available? =
+
+You can generate SKU values using numbers only, letters only, alphanumeric format, or product slug.
+
+= How do Prefix, Suffix, and Additional Number work together? =
+
+Prefix is added at the beginning, suffix at the end, and additional number appends an incrementing numeric sequence in bulk generation.
+
+= Does this plugin support variable products and variation SKU generation? =
+
+Yes. The plugin can generate SKU values for variable products and variation items based on your current settings, including custom separators.
+
+= What does "Re-create existing SKUs" do? =
+
+When enabled, existing SKU values are replaced during bulk generation. When disabled, only products with empty `_sku` values are generated.
+
+= What does "Use Previous Product" mean? =
+
+This option creates the next SKU based on the last published product SKU (+1 logic). It is intended for sequential SKU workflows.
+
+= Can I allow duplicate SKU values? =
+
+Yes. You can enable duplicate SKU values in settings if your catalog workflow requires it.
+
+= What batch size should I use for bulk SKU generation? =
+
+For low-memory hosting, start with small batches (1-3 products per request). Increase batch size only if processing remains stable.
 
 = Bulk SKU generation for all products stops and does not work correctly - what should I do? =
 
-Some users have problems with mass SKU generation. Today I can say with confidence that the plugin has been fixed in relation to this function, we decided this in [this thread on the user support forum](https://wordpress.org/support/topic/mass-creation-crashed/).
+If bulk generation stops, first check the latest plugin version and server limits. See the related support topic [here](https://wordpress.org/support/topic/mass-creation-crashed/).
 
-**So what if mass creation ceases?**
+**What to check:**
 
 1. Be sure to update the plugin to the latest version
 
-2. On the settings page in a browser, open DevTools and on the console tab check for errors. If you have any errors, be sure to let us know in the user support forum. If you see a 500 error, this is a server error, and you need to get your server logs to determine the error.
+2. Open browser DevTools on the settings page and check Console/Network for errors.
 
-3. If you know how to do this, then look at the server logs, there are all the errors. Write us about the error on the [user support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/).
+3. Check server logs for PHP or timeout errors and share details in the [support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/).
 
-4. Contact the technical support service of your hosting provider and explain the cause of the problem. Find out where the server logs are located (if you do not know which log is stored). Ask to fix the problem, maybe they will fix it.
+4. Contact your hosting support if you see memory, timeout, or HTTP 500 errors.
 
-Only after we see the server logs, we can find out the reason for the script to work incorrectly. You can find an alternative to our plugin, but keep in mind that something on your server is not working correctly.
-
-Be sure to write to the [user support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/) if the error has been fixed. There are other people who will use our plugin and need to be properly informed.
+Please post the error details in the [support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/) so we can help faster.
 
 == Screenshots ==
 
@@ -241,17 +160,19 @@ Be sure to write to the [user support forum](https://wordpress.org/support/plugi
 
 == Upgrade Notice ==
 
-The latest plugin update version 1.1.9 has the following changes:
-
-* New readme
-* Checked compatibility with WordPress 6.4
-* Checked compatibility with WooCommerce 8.0
-* Variant product separator is now available when editing and adding a product
-* Fixed recreation of the existing SKU variant of a product.
-
-Additional list of changes can be found here - https://wordpress.org/plugins/easy-woocommerce-auto-sku-generator/#developers.
+Version 1.3.0 improves reliability and performance for large catalogs: batch bulk generation, JSON-based processing, redesigned admin modal UI, and better SKU-field controls.
 
 == Changelog ==
+
+= 1.3.0 =
+* Redesigned bulk generator modal dialogs in WordPress admin style.
+* Added batch processing (1-10 products per request) for bulk SKU generation.
+* Added "Recommend" button to suggest batch size based on server memory.
+* Switched bulk processing responses from plain HTML to JSON.
+* Refactored JavaScript modules to reduce global conflicts.
+* Improved SKU field icon strip behavior and tooltip interactions.
+* Improved "Take previous product" logic and internal code structure.
+* Added HPOS (High-Performance Order Storage) compatibility declaration.
 
 = 1.2.0 =
 * Added new information to plugin settings.
@@ -299,7 +220,8 @@ Additional list of changes can be found here - https://wordpress.org/plugins/eas
 * Tested compatibility with WordPress 5.9
 * Tested compatibility with WooCommerce 5.8.3
 * Changed SKU generator progress indicator
-* Add style generator SKU
+* Added style updates for SKU generator
+* Added option "Allow identical SKUs"
 
 = 1.1.1 =
 * Added compatibility with the "Table Rate Shipping Method for WooCommerce by Flexible Shipping" plugin
@@ -307,9 +229,6 @@ Additional list of changes can be found here - https://wordpress.org/plugins/eas
 
 = 1.1.0 =
 * Fixed bug with disabling SKU block
-
-= 1.1.2 =
-* Added new option "Allow identical SKUs"
 
 = 1.0.8 =
 * Fixed an error generating variant products
@@ -385,10 +304,8 @@ Additional list of changes can be found here - https://wordpress.org/plugins/eas
 * fix translate
 
 = 0.8.7 =
-* fix translate
-
-= 0.8.7 =
-* fix translate selector
+* Fixed translation strings
+* Fixed translation selector
 
 = 0.8.6 =
 * fix missing dependencies ffxf_slug_script.js
@@ -410,18 +327,13 @@ Additional list of changes can be found here - https://wordpress.org/plugins/eas
 * In the latest version of plugin 0.8.3, preparations were made for implementing a function that generates SKUs for all products bulk. 
 
 = 0.8.2 =
-* Fixed numerical values
-
-= 0.8.2 =
-* Test numerical values and fix error
+* Improved numerical value handling
+* Fixed related edge-case errors
 
 = 0.8.1 =
-* Test numerical values
-
-= 0.8.1 =
-* Test numerical values
-* Added a new function for converting SKU numbers of previously published products
-* New notification added in case of error or failure
+* Improved numerical value handling tests
+* Added function for converting SKU numbers from previously published products
+* Added notification for error and failure states
 
 = 0.8.0 =
 * Fix error id SKU and all option

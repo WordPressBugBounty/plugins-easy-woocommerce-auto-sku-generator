@@ -1,22 +1,60 @@
 <?php
 /**
- * Get variation separator value.
+ * Legacy function bridges.
  *
- * @return string The variation separator value.
+ * @package EasyAutoSkuGenerator
+ */
+
+use EasyAutoSkuGenerator\Services\SkuGenerationService;
+use EasyAutoSkuGenerator\Services\VariationSkuService;
+
+/**
+ * Legacy wrapper: get variation separator value.
+ *
+ * @return string
  */
 function get_variation_separator_value() {
-    // Get the value of "Enable variant settings" option.
-    $variant_settings_enabled = get_option('skuautoffxf_variation_settings');
+	return SkuGenerationService::get_variation_separator();
+}
 
-    // Get the value of "Variation Separator" option.
-    $variation_separator = get_option('skuautoffxf_variation_separator');
+/**
+ * Legacy wrapper: get SKU character set.
+ *
+ * @return string
+ */
+function ffxf_get_sku_characters() {
+	return SkuGenerationService::get_character_set();
+}
 
-    // Check if both options have values.
-    if (!empty($variant_settings_enabled) && !empty($variation_separator)) {
-        // If both values exist, return the value of "Variation Separator".
-        return $variation_separator;
-    } else {
-        // If at least one value is missing, return the default separator "-".
-        return '-';
-    }
+/**
+ * Legacy wrapper: generate random SKU core.
+ *
+ * @param int    $length     Number of random chars.
+ * @param string $number_dop Additional number value.
+ * @return string
+ */
+function ffxf_generate_random_sku_core( $length, $number_dop = '' ) {
+	return SkuGenerationService::build_random_sku_core( (int) $length, (string) $number_dop );
+}
+
+/**
+ * Legacy wrapper: bulk variation SKU generation.
+ *
+ * @param WC_Product $product Variable product instance.
+ * @param string     $parent_sku Parent SKU.
+ * @return void
+ */
+function ffxf_generate_variation_skus( $product, $parent_sku ) {
+	VariationSkuService::generate_for_bulk( $product, (string) $parent_sku );
+}
+
+/**
+ * Legacy wrapper: variation SKU generation on product save.
+ *
+ * @param WC_Product $product Variable product instance.
+ * @param string     $parent_sku Parent SKU.
+ * @return void
+ */
+function ffxf_generate_variation_skus_on_product_save( $product, $parent_sku ) {
+	VariationSkuService::generate_on_product_save( $product, (string) $parent_sku );
 }
