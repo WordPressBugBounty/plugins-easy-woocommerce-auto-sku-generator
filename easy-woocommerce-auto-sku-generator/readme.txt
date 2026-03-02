@@ -1,20 +1,24 @@
 === Easy Auto SKU Generator for WooCommerce ===
 Contributors: alexodiy, campusboy1987
 Donate link: https://boosty.to/dan-zakirov/donate
-Tags: woocommerce, sku generator, product sku, auto sku, variable product sku
+Tags: product sku, sku, sku generator, woocommerce
 Requires at least: 4.8
 Tested up to: 6.9
-Stable tag: 1.3.0
+Stable tag: 1.3.1
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Automatically generate SKU codes in WooCommerce with flexible formats, variation support, and bulk tools.
+Generate and bulk-generate WooCommerce SKU codes automatically for products and variations with flexible formats, slug mode, and overwrite control.
 
 == Description ==
-Generate WooCommerce SKU values automatically when creating products, editing products, or running bulk actions.
+Generate SKU in WooCommerce automatically when creating products, editing products, or running bulk actions.
 
-Easy Auto SKU Generator helps store owners keep SKU structure consistent without manual typing.
+Use one ruleset for your catalog and keep SKU values consistent without manual typing.
+
+Built for stores that need fast SKU generation for products and variations, including bulk generation by all products or by category.
+
+In under a minute, you can set prefix/suffix, format, length, variation separator, and batch size, then run generation safely.
 
 Tested with WordPress 6.9.1 and WooCommerce 10.5.2.
 
@@ -37,6 +41,31 @@ WooCommerce &rarr; Settings &rarr; Products &rarr; SKU Settings
 11. Bulk generate SKU by category.
 12. Additional number with configurable increment format.
 13. Variation separator settings for variable products.
+
+== Why this plugin ==
+
+* WooCommerce-focused SKU automation with both single-product and bulk generation workflows.
+* Slug mode and multiple SKU formats (numbers, letters, alphanumeric) in one settings screen.
+* Variation-safe generation with configurable separator logic.
+* Batch processing controls for large catalogs and lower-risk runs on weak hosting.
+* Clear overwrite behavior: keep existing SKU values or re-create them intentionally.
+
+== Settings Reference ==
+
+Use these options in WooCommerce &rarr; Settings &rarr; Products &rarr; SKU Settings.
+
+* **Characters** - sets the random SKU length.
+* **Prefix SKU** - adds text before generated SKU (example: `BN_`).
+* **SKU format** - choose numbers, letters, alphanumeric, or product slug.
+* **Add product ID** - appends product ID to generated SKU.
+* **Take previous product** - builds next SKU from the last published product (+1 sequence).
+* **Duplicate SKUs** - allows repeated SKU values when your workflow needs it.
+* **SKU suffix** - adds text at the end of generated SKU.
+* **Additional number** - appends incrementing number in bulk mode (example: `001`, `002`, `003`).
+* **Format for Additional number** - controls increment style with leading zeros.
+* **Enable variant settings** - enables variation controls.
+* **Variable Product** - enables/disables variation SKU generation.
+* **Variation Separator** - separator between parent SKU and variation index (`-`, `--`, `/`, etc.).
 
 == Required Plugin ==
 
@@ -64,7 +93,7 @@ Bulk generator supports:
 * Optional recreation of existing SKU values.
 * Progress indicator during processing.
 
-For large stores, run bulk generation in smaller batches to reduce server load.
+Increasing batch size speeds up processing but increases server load.
 
 == Translations ==
 
@@ -100,9 +129,25 @@ Yes. Please share ideas or bug reports on the [support forum](https://wordpress.
 
 Open: WooCommerce &rarr; Settings &rarr; Products &rarr; SKU Settings.
 
+= Where can I read details for every setting? =
+
+See the "Settings Reference" section in this readme. It explains each option and expected behavior.
+
 = What SKU formats are available? =
 
 You can generate SKU values using numbers only, letters only, alphanumeric format, or product slug.
+
+= How to generate SKU in WooCommerce? =
+
+Open WooCommerce &rarr; Settings &rarr; Products &rarr; SKU Settings, configure your SKU rules, and save. Then create/edit a product or run a bulk generation action.
+
+= How to bulk generate SKU in WooCommerce? =
+
+Go to SKU Settings and use the bulk tools to generate SKU values for all products or for a selected category. Start with a smaller batch size on low-resource hosting.
+
+= Will it overwrite existing SKU values? =
+
+Only if you enable "Re-create existing SKUs". If this option is disabled, the plugin generates SKU values only for products with empty `_sku`.
 
 = How do Prefix, Suffix, and Additional Number work together? =
 
@@ -144,25 +189,34 @@ If bulk generation stops, first check the latest plugin version and server limit
 
 Please post the error details in the [support forum](https://wordpress.org/support/plugin/easy-woocommerce-auto-sku-generator/) so we can help faster.
 
+= Can I keep existing SKU values and generate only missing ones? =
+
+Yes. Leave "Re-create existing SKUs" disabled to generate SKU values only for products where `_sku` is empty.
+
 == Screenshots ==
 
-1. Format SKU
-2. SKU Settings
-3. Where to find the settings?
-4. Support forum and field SKU
-5. SKU generation options
-6. Bulk generate SKU for all products
-7. Bulk generate SKU by Category
-8. Bulk generate SKU by Category
-9. The process of generating SKU of all products
-10. Completion of the SKU generation process for all products
-11. Future plans
+1. SKU format and structure options in WooCommerce settings
+2. Main SKU Settings page overview
+3. Where to find SKU Settings in WooCommerce
+4. Product edit screen with SKU field actions
+5. SKU generation options: prefix, suffix, format, length
+6. Bulk SKU generation settings for all products
+7. Bulk SKU generation settings by category
+8. Batch-size selector and generation controls
+9. Bulk SKU generation progress modal
+10. Bulk SKU generation completed state
+11. Roadmap and planned improvements
 
 == Upgrade Notice ==
 
-Version 1.3.0 improves reliability and performance for large catalogs: batch bulk generation, JSON-based processing, redesigned admin modal UI, and better SKU-field controls.
+Version 1.3.1 improves release quality: refined uninstall cleanup logic, updated SEO-focused readme content, and clearer FAQ guidance.
 
 == Changelog ==
+
+= 1.3.1 =
+* Refined uninstall cleanup logic for cleaner multisite behavior.
+* Updated readme SEO copy (description, screenshots text, and FAQ).
+* Improved user guidance for batch processing behavior.
 
 = 1.3.0 =
 * Redesigned bulk generator modal dialogs in WordPress admin style.

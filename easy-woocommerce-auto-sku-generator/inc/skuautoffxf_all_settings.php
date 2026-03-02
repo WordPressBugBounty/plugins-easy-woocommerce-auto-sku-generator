@@ -179,7 +179,7 @@ function skuautoffxf_enqueue_bulk_generator_script() {
 		'sku-bulk-generator',
 		plugins_url( '/assets/js/sku-bulk-generator.js', dirname( __FILE__ ) ),
 		array( 'jquery' ),
-		'1.3.0',
+		'1.3.1',
 		true
 	);
 
