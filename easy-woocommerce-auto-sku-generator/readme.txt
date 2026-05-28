@@ -4,7 +4,7 @@ Donate link: https://boosty.to/dan-zakirov/donate
 Tags: product sku, sku, sku generator, woocommerce
 Requires at least: 4.8
 Tested up to: 6.9
-Stable tag: 1.3.1
+Stable tag: 1.3.2
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -209,9 +209,13 @@ Yes. Leave "Re-create existing SKUs" disabled to generate SKU values only for pr
 
 == Upgrade Notice ==
 
-Version 1.3.1 improves release quality: refined uninstall cleanup logic, updated SEO-focused readme content, and clearer FAQ guidance.
+Version 1.3.2 restores variation SKU generation on product save. If you do not want SKU values generated for variations, enable the "Variable product" (Turn off generation) option in SKU Settings before updating.
 
 == Changelog ==
+
+= 1.3.2 =
+* Fixed: variation SKU values were not generated when saving a variable product.
+* Fixed: condition for the "Variable product" option used inverted logic and blocked generation on default settings.
 
 = 1.3.1 =
 * Refined uninstall cleanup logic for cleaner multisite behavior.

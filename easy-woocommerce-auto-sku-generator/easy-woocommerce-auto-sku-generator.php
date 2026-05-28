@@ -5,7 +5,7 @@
  * Text Domain: easy-woocommerce-auto-sku-generator
  * Domain Path: /languages
  * Description: Automatically assign a unique SKU for all variations of your product. Just activate the plugin
- * Version: 1.3.1
+ * Version: 1.3.2
  * Author: Dan Zakirov
  * Author URI: https://profiles.wordpress.org/alexodiy/
  * License: GPL-2.0+
@@ -134,7 +134,7 @@ function ffxf_registering_script() {
 	$skuautoffxf_number_dop          = get_option( 'skuautoffxf_number_dop' );
 	$skuautoffxf_variation_separator = get_option( 'skuautoffxf_variation_separator' );
 
-	wp_enqueue_style( 'ffxf_autosku', plugins_url( '/assets/css/ffxf_autosku.css', __FILE__ ), array(), '1.3.1' );
+	wp_enqueue_style( 'ffxf_autosku', plugins_url( '/assets/css/ffxf_autosku.css', __FILE__ ), array(), '1.3.2' );
 	wp_enqueue_style( 'ffxf_tooltip', plugins_url( '/assets/css/ffxf_tooltip.css', __FILE__ ), array(), '1.1.9' );
 
 	if ( 'ffxf_slug' === $skuautoffxf_letters_and_numbers ) {
@@ -159,7 +159,7 @@ function ffxf_enqueue_slug_script( $site_url ) {
 		'ffxf_slug_script',
 		plugins_url( '/assets/js/ffxf_slug_script.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.3.1',
+		'1.3.2',
 		true
 	);
 
@@ -247,7 +247,7 @@ function ffxf_enqueue_auto_sku_script(
 		'ffxf_auto_sku',
 		plugins_url( '/assets/js/ffxf_auto_sku.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.3.1',
+		'1.3.2',
 		true
 	);
 
@@ -370,7 +370,7 @@ add_action( 'woocommerce_admin_process_product_object', 'ffxf_wc_auto_generate_v
 function ffxf_wc_auto_generate_variations_skus( $product ) {
 	$skuautoffxf_auto_variant = get_option( 'skuautoffxf_auto_variant' );
 
-	if ( ! $product || ! $product->is_type( 'variable' ) || 'no' !== $skuautoffxf_auto_variant ) {
+	if ( ! $product || ! $product->is_type( 'variable' ) || 'yes' === $skuautoffxf_auto_variant ) {
 		return;
 	}
 
@@ -403,14 +403,14 @@ function ffxf_registering_setting_script() {
 		return;
 	}
 
-	wp_enqueue_style( 'ffxf_settings', plugins_url( '/assets/css/ffxf_settings.css', __FILE__ ), array(), '1.3.1' );
+	wp_enqueue_style( 'ffxf_settings', plugins_url( '/assets/css/ffxf_settings.css', __FILE__ ), array(), '1.3.2' );
 	wp_enqueue_style( 'ffxf_tooltip', plugins_url( '/assets/css/ffxf_tooltip.css', __FILE__ ), array(), '1.1.9' );
 
 	wp_register_script(
 		'ffxf_settings_script',
 		plugins_url( '/assets/js/ffxf_settings_script.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.3.1',
+		'1.3.2',
 		true
 	);
 
