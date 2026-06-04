@@ -5,14 +5,14 @@
  * Text Domain: easy-woocommerce-auto-sku-generator
  * Domain Path: /languages
  * Description: Automatically assign a unique SKU for all variations of your product. Just activate the plugin
- * Version: 1.3.2
+ * Version: 1.3.4
  * Author: Dan Zakirov
  * Author URI: https://profiles.wordpress.org/alexodiy/
  * License: GPL-2.0+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
  * WC requires at least: 3.3.0
- * WC tested up to: 10.5.2
+ * WC tested up to: 10.8.1
  *
  *     Copyright Dan Zakirov
  *
@@ -134,7 +134,7 @@ function ffxf_registering_script() {
 	$skuautoffxf_number_dop          = get_option( 'skuautoffxf_number_dop' );
 	$skuautoffxf_variation_separator = get_option( 'skuautoffxf_variation_separator' );
 
-	wp_enqueue_style( 'ffxf_autosku', plugins_url( '/assets/css/ffxf_autosku.css', __FILE__ ), array(), '1.3.2' );
+	wp_enqueue_style( 'ffxf_autosku', plugins_url( '/assets/css/ffxf_autosku.css', __FILE__ ), array(), '1.3.4' );
 	wp_enqueue_style( 'ffxf_tooltip', plugins_url( '/assets/css/ffxf_tooltip.css', __FILE__ ), array(), '1.1.9' );
 
 	if ( 'ffxf_slug' === $skuautoffxf_letters_and_numbers ) {
@@ -159,7 +159,7 @@ function ffxf_enqueue_slug_script( $site_url ) {
 		'ffxf_slug_script',
 		plugins_url( '/assets/js/ffxf_slug_script.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.3.2',
+		'1.3.4',
 		true
 	);
 
@@ -247,7 +247,7 @@ function ffxf_enqueue_auto_sku_script(
 		'ffxf_auto_sku',
 		plugins_url( '/assets/js/ffxf_auto_sku.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.3.2',
+		'1.3.4',
 		true
 	);
 
@@ -403,14 +403,14 @@ function ffxf_registering_setting_script() {
 		return;
 	}
 
-	wp_enqueue_style( 'ffxf_settings', plugins_url( '/assets/css/ffxf_settings.css', __FILE__ ), array(), '1.3.2' );
+	wp_enqueue_style( 'ffxf_settings', plugins_url( '/assets/css/ffxf_settings.css', __FILE__ ), array(), '1.3.4' );
 	wp_enqueue_style( 'ffxf_tooltip', plugins_url( '/assets/css/ffxf_tooltip.css', __FILE__ ), array(), '1.1.9' );
 
 	wp_register_script(
 		'ffxf_settings_script',
 		plugins_url( '/assets/js/ffxf_settings_script.js', __FILE__ ),
 		array( 'jquery' ),
-		'1.3.2',
+		'1.3.4',
 		true
 	);
 

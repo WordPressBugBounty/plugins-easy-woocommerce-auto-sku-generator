@@ -205,8 +205,6 @@
 			' href="' + ffxf_sku.skuautoffxf_site_url + '/wp-admin/admin.php?page=wc-settings&tab=products&section=skuautoffxf">' +
 			'<span class="dashicons dashicons-admin-generic" aria-hidden="true"></span>' +
 		'</a>' +
-		// Warning / forum icon slot (always present for layout)
-		warningInnerHtml +
 		// Refresh icon
 		'<a id="ffxf-refresh" class="ffxf-sku-icon tips"' +
 			' data-tip="' + ffxf_sku.data_tooltip_trigger_script + '"' +

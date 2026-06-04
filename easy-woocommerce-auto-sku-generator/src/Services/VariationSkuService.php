@@ -69,7 +69,7 @@ class VariationSkuService {
 			$prefix       = count( $children_ids ) < 100 ? sprintf( '%02d', $count ) : sprintf( '%03d', $count );
 			$new_sku      = $parent_sku . $separator . $prefix;
 
-			if ( '' !== $original_sku ) {
+			if ( '' !== $original_sku && $original_sku !== $parent_sku ) {
 				continue;
 			}
 

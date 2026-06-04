@@ -135,7 +135,6 @@
 			' href="' + ffxf_slug.skuautoffxf_site_url + '/wp-admin/admin.php?page=wc-settings&tab=products&section=skuautoffxf">' +
 			'<span class="dashicons dashicons-admin-generic" aria-hidden="true"></span>' +
 		'</a>' +
-		warningInnerHtml +
 		'<a id="ffxf-refresh" class="ffxf-sku-icon tips"' +
 			' data-tip="' + ffxf_slug.data_tooltip_trigger_script + '"' +
 			' href="#" onclick="ffxfSlugRefreshSku();return false;">' +

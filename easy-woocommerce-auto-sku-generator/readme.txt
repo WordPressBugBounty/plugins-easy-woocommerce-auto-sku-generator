@@ -3,8 +3,8 @@ Contributors: alexodiy, campusboy1987
 Donate link: https://boosty.to/dan-zakirov/donate
 Tags: product sku, sku, sku generator, woocommerce
 Requires at least: 4.8
-Tested up to: 6.9
-Stable tag: 1.3.2
+Tested up to: 7.0
+Stable tag: 1.3.4
 Requires PHP: 5.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -20,7 +20,7 @@ Built for stores that need fast SKU generation for products and variations, incl
 
 In under a minute, you can set prefix/suffix, format, length, variation separator, and batch size, then run generation safely.
 
-Tested with WordPress 6.9.1 and WooCommerce 10.5.2.
+Tested with WordPress 7.0 and WooCommerce 10.8.1.
 
 == Settings ==
 
@@ -209,9 +209,17 @@ Yes. Leave "Re-create existing SKUs" disabled to generate SKU values only for pr
 
 == Upgrade Notice ==
 
-Version 1.3.2 restores variation SKU generation on product save. If you do not want SKU values generated for variations, enable the "Variable product" (Turn off generation) option in SKU Settings before updating.
+Version 1.3.4 removes a promotional pulse icon from the SKU input toolbar and updates WordPress/WooCommerce compatibility info. No behavior changes.
 
 == Changelog ==
+
+= 1.3.4 =
+* Removed: promotional pulse icon next to the SKU input. The Settings shortcut and Re-Create SKU buttons stay.
+* Updated: "Tested up to" to WordPress 7.0 and WooCommerce 10.8.1.
+
+= 1.3.3 =
+* Fixed: variation SKU generation did not run when WooCommerce pre-filled variations with the parent SKU (regression from 1.3.2).
+* Manual SKU values on variations are still preserved.
 
 = 1.3.2 =
 * Fixed: variation SKU values were not generated when saving a variable product.
